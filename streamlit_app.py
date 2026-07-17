@@ -27,9 +27,9 @@ SITE = {
     """
 }
 SONG = {
-    "title": "Mari Kart.",
+    "title": "SONG OF THE WEEK.",
 
-    "artist": "Kanye West",
+    "artist": "Kanye West - Homecoming",
 
     "cover": "assets/covers/mari-kart.jpg",
 
