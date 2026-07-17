@@ -21,7 +21,8 @@ SITE = {
     "tagline": "Independent Upcoming Producer • Web/Game Developer • Strategy Game Analyst",
     "description":
     """
-    Evothorne, also more known as Tim Gabriel, is a self-taught independent coder and upcoming producer.
+    Evothorne, also more known as Tim Gabriel, is a self-taught,
+    independent coder and upcoming producer.
     For more information on him, visit the "Autobiography" page.
     """
 }
