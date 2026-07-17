@@ -19,12 +19,7 @@ SITE = {
     "name": "THORNED GARDEN",
     "owner": "BY EVOTHORNE - Tim Gabriel",
     "tagline": "Independent Upcoming Producer • Web/Game Developer • Strategy Game Analyst",
-    "description":
-    """
-    Evothorne, also more known as Tim Gabriel, is a self-taught,
-    independent coder and upcoming producer.
-    For more information on him, visit the "Autobiography" page.
-    """
+    
 }
 SONG = {
     "title": "SONG OF THE WEEK.",
@@ -35,7 +30,6 @@ SONG = {
 
     "youtube":
     "https://www.youtube.com/embed/EzU0ofo3jOs",
-
     "description":
     """
     idk lol.
