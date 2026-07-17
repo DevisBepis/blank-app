@@ -375,26 +375,42 @@ for project in PROJECTS:
 
     left,right = st.columns([1,2], gap="large")
 
-    with left:
+   from pathlib import Path
+with left:
 
-        image = Path(project["image"])
+    media = Path(project["media"])
+    if media.exists():
 
-        if image.exists():
-
+        if project["media_type"] == "image":
             st.image(
-                image,
-                use_container_width=True
+                media,
+                use_container_width=True,
             )
-        video = Path(project["video"])
-        if video.exists():
 
-            st.video(
-                video,
-                use_container_width=True
+        elif project["media_type"] == "video":
+            st.video(str(media))
+
+    else:
+
+        st.markdown(
+            """
+<div style="
+height:220px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#ECE8E2;
+border-radius:18px;
+color:#666;
+font-weight:600;
+">
+Preview unavailable
+</div>
+""",
+            unsafe_allow_html=True,
+        )
             )
-        else:
 
-            st.markdown(
                 """
 <div style="
 height:220px;
