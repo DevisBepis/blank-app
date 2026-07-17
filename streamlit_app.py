@@ -324,7 +324,7 @@ PROJECTS = [
 
         "status":"Demo • TBA",
 
-        "image":"assets/covers/pcs.mp4",
+        "video":"assets/covers/pcs.mp4",
 
         "description":
         "A ROM Hack Project I started back in 2025. Planning on moving it to pokeemerald expansion."
@@ -337,7 +337,7 @@ PROJECTS = [
 
         "status":"Released - Originally on Instagram",
 
-        "image":"assets/covers/for-you-v1-snippet.mp4",
+        "video":"assets/covers/for-you-v1-snippet.mp4",
 
         "description":
         "A small snippet for one of my singles. (Temporarily archived on Instagram)"
