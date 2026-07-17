@@ -17,13 +17,12 @@ st.set_page_config(
 SITE = {
 
     "name": "THORNED GARDEN",
-    "owner": "EVOTHORNE",
-    "tagline": "Independent Producer • Developer • ROM Hacker",
+    "owner": "BY EVOTHORNE - Tim Gabriel",
+    "tagline": "Independent Upcoming Producer • Web/Game Developer • Strategy Game Analyst",
     "description":
     """
-    A creative studio documenting music,
-    software, interface design,
-    and game development.
+    Evothorne, also more known as Tim Gabriel, is a self-taught independent coder and upcoming producer.
+    For more information on him, visit the "Autobiography" page.
     """
 }
 SONG = {
@@ -38,7 +37,7 @@ SONG = {
 
     "description":
     """
-    idk.
+    idk lol.
     """
 }
 
@@ -52,7 +51,7 @@ PROJECTS = []
 st.markdown("""
 <style>
 /* ====================================================== */
-/* NOW PLAYING */
+/* RANDOM MEME THING */
 /* ====================================================== */
 
 iframe{
