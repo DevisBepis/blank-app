@@ -370,30 +370,36 @@ unsafe_allow_html=True
 )
 
 for project in PROJECTS:
-
     st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    left,right = st.columns([1,2], gap="large")
+    left, right = st.columns([1, 2], gap="large")
 
-   from pathlib import Path
-with left:
+    from pathlib import Path
 
-    media = Path(project["media"])
-    if media.exists():
+    with left:
+        # support keys: media, video, image
+        media_path = project.get("media") or project.get("video") or project.get("image")
+        if media_path:
+            media = Path(media_path)
+            if media.exists():
+                # determine type
+                mtype = project.get("media_type")
+                if not mtype:
+                    suffix = media.suffix.lower()
+                    if suffix in [".mp4", ".mov", ".webm"]:
+                        mtype = "video"
+                    else:
+                        mtype = "image"
 
-        if project["media_type"] == "image":
-            st.image(
-                media,
-                use_container_width=True,
-            )
-
-        elif project["media_type"] == "video":
-            st.video(str(media))
-
-    else:
-
-        st.markdown(
-            """
+                if mtype == "image":
+                    st.image(media, use_container_width=True)
+                elif mtype == "video":
+                    st.video(str(media))
+                else:
+                    st.write("")
+            else:
+                st.markdown(
+                    """
 <div style="
 height:220px;
 display:flex;
@@ -407,10 +413,10 @@ font-weight:600;
 Preview unavailable
 </div>
 """,
-            unsafe_allow_html=True,
-        )
-            )
-
+                    unsafe_allow_html=True,
+                )
+        else:
+            st.markdown(
                 """
 <div style="
 height:220px;
@@ -424,18 +430,14 @@ color:#666;
 Preview
 </div>
 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )
 
     with right:
-
-        st.caption(project["category"])
-
-        st.subheader(project["title"])
-
-        st.write(project["description"])
-
-        st.caption(project["status"])
+        st.caption(project.get("category", ""))
+        st.subheader(project.get("title", ""))
+        st.write(project.get("description", ""))
+        st.caption(project.get("status", ""))
 
     st.markdown("</div>", unsafe_allow_html=True)
 
