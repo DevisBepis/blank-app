@@ -48,8 +48,9 @@ PROJECTS = []
 # GLOBAL CSS
 # ==========================================================
 
-st.markdown("""
 
+st.markdown("""
+<style>
 /* ====================================================== */
 /* NOW PLAYING */
 /* ====================================================== */
@@ -75,7 +76,6 @@ font-size:3rem;
 }
 
 }
-<style>
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap');
 
