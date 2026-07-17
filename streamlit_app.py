@@ -327,20 +327,20 @@ PROJECTS = [
         "image":"assets/projects/cerulean_seas.png",
 
         "description":
-        "A modern Pokémon ROM hack featuring new mechanics and original content."
+        "A ROM Hack Project I started back in 2025. Planning on moving it to pokeemerald expansion."
     },
 
     {
-        "title":"FOR YOU v2",
+        "title":"FOR YOU v1",
 
         "category":"Music",
 
-        "status":"August 2026",
+        "status":"Released - Originally on Instagram",
 
         "image":"assets/projects/for_you.png",
 
         "description":
-        "Upcoming single release."
+        "A small snippet for one of my singles. (Temporarily archived on Instagram)"
     },
 
     {
@@ -353,7 +353,7 @@ PROJECTS = [
         "image":"assets/projects/garden_of_thorns.png",
 
         "description":
-        "A conceptual EP blending industrial textures with melodic songwriting."
+        "A conceptual, WIP EP. More info on the Autobiography page."
     }
 
 ]
