@@ -50,6 +50,31 @@ PROJECTS = []
 
 st.markdown("""
 
+/* ====================================================== */
+/* NOW PLAYING */
+/* ====================================================== */
+
+iframe{
+width:100%;
+border:none;
+border-radius:18px;
+box-shadow:
+0 15px 40px rgba(0,0,0,.08);
+
+}
+
+@media (max-width:900px){
+.title{
+font-size:3.4rem;
+
+}
+
+.logo{
+font-size:3rem;
+
+}
+
+}
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap');
@@ -122,37 +147,25 @@ max-width:720px;
 /* Cards */
 
 .card{
-
 background:white;
-
 border:1px solid rgba(0,0,0,.08);
-
 border-radius:22px;
-
 padding:28px;
-
 box-shadow:
-
 0 14px 35px rgba(0,0,0,.04);
-
 transition:.25s;
 
 }
 
 .card:hover{
-
 transform:translateY(-4px);
-
 box-shadow:
-
 0 20px 45px rgba(0,0,0,.08);
 
 }
 
 /* Images */
-
 .stImage img{
-
 border-radius:18px;
 
 }
@@ -160,15 +173,10 @@ border-radius:18px;
 /* Buttons */
 
 .stButton>button{
-
 border-radius:999px;
-
 background:#111;
-
 color:white;
-
 border:none;
-
 padding:.7rem 1.5rem;
 
 }
@@ -185,30 +193,94 @@ st.markdown(
 f"""
 
 <div class="logo">
-
 {SITE["name"]}
-
 </div>
 
 <div class="section">
-
 {SITE["owner"]}
-
 </div>
 
 <div class="title">
-
-Creative Studio
-
+Tim's Space
 </div>
 
 <div class="body">
-
 {SITE["description"]}
-
 </div>
 
 """,
 
 unsafe_allow_html=True
 )
+
+# ==========================================================
+# NOW PLAYING
+# ==========================================================
+
+st.write("")
+st.write("")
+
+st.markdown(
+    """
+<div class="section">
+
+NOW PLAYING
+
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+cover_col, player_col = st.columns([1, 2], gap="large")
+
+# ----------------------------------------------------------
+# LEFT
+# ----------------------------------------------------------
+
+with cover_col:
+
+    st.image(
+        SONG["cover"],
+        use_container_width=True,
+    )
+
+# ----------------------------------------------------------
+# RIGHT
+# ----------------------------------------------------------
+
+with player_col:
+
+    st.markdown(
+        f"""
+<div class="card">
+
+<h2 style="margin-top:0;margin-bottom:6px;">
+
+{SONG["title"]}
+
+</h2>
+
+<p style="margin-top:0;color:#666;font-size:1rem;">
+
+{SONG["artist"]}
+
+</p>
+
+<p style="margin-top:24px;line-height:1.8;color:#555;">
+
+{SONG["description"]}
+
+</p>
+
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.write("")
+
+    st.components.v1.iframe(
+        SONG["youtube"],
+        height=315,
+        scrolling=False,
+    )
