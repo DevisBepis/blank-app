@@ -214,9 +214,6 @@ f"""
 {SITE["owner"]}
 </div>
 
-<div class="body">
-{SITE["description"]}
-</div>
 
 """,
 
