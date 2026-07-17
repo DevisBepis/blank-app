@@ -31,14 +31,14 @@ SONG = {
 
     "artist": "Kanye West",
 
-    "cover": "assets/covers/mari_kart.jpg",
+    "cover": "assets/covers/mari-kart.jpg",
 
     "youtube":
     "https://www.youtube.com/embed/EzU0ofo3jOs",
 
     "description":
     """
-    Music currently inspiring my work.
+    idk.
     """
 }
 
