@@ -385,7 +385,13 @@ for project in PROJECTS:
                 image,
                 use_container_width=True
             )
+        video = Path(project["video"])
+        if video.exists():
 
+            st.video(
+                video,
+                use_container_width=True
+            )
         else:
 
             st.markdown(
