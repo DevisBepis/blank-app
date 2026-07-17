@@ -180,7 +180,27 @@ border:none;
 padding:.7rem 1.5rem;
 
 }
+/* ====================================================== */
+/* PROJECTS */
+/* ====================================================== */
 
+.card{
+
+margin-bottom:18px;
+
+}
+
+.stCaption{
+
+letter-spacing:.12em;
+
+text-transform:uppercase;
+
+font-size:.75rem;
+
+color:#888;
+}
+            
 </style>
 
 """, unsafe_allow_html=True)
@@ -198,10 +218,6 @@ f"""
 
 <div class="section">
 {SITE["owner"]}
-</div>
-
-<div class="title">
-Tim's Space
 </div>
 
 <div class="body">
@@ -224,7 +240,7 @@ st.markdown(
     """
 <div class="section">
 
-NOW PLAYING
+RANDOM MEME THING
 
 </div>
 """,
@@ -237,12 +253,31 @@ cover_col, player_col = st.columns([1, 2], gap="large")
 # LEFT
 # ----------------------------------------------------------
 
-with cover_col:
+from pathlib import Path
 
-    st.image(
-        SONG["cover"],
-        use_container_width=True,
-    )
+with cover_col:
+    cover = Path(SONG["cover"])
+
+    if cover.exists():
+        st.image(
+            cover,
+            use_container_width=True,
+        )
+    else:
+        st.markdown(
+            """
+<div class="card" style="
+height:320px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#777;
+">
+Album cover missing
+</div>
+""",
+            unsafe_allow_html=True,
+        )
 
 # ----------------------------------------------------------
 # RIGHT
@@ -284,3 +319,114 @@ with player_col:
         height=315,
         scrolling=False,
     )
+
+    # ==========================================================
+# FEATURED PROJECTS
+# ==========================================================
+
+PROJECTS = [
+
+    {
+        "title":"Pokémon Cerulean Seas",
+
+        "category":"ROM Hack",
+
+        "status":"Demo • TBA",
+
+        "image":"assets/projects/cerulean_seas.png",
+
+        "description":
+        "A modern Pokémon ROM hack featuring new mechanics and original content."
+    },
+
+    {
+        "title":"FOR YOU v2",
+
+        "category":"Music",
+
+        "status":"August 2026",
+
+        "image":"assets/projects/for_you.png",
+
+        "description":
+        "Upcoming single release."
+    },
+
+    {
+        "title":"GARDEN OF THORNS",
+
+        "category":"EP",
+
+        "status":"In Progress",
+
+        "image":"assets/projects/garden_of_thorns.png",
+
+        "description":
+        "A conceptual EP blending industrial textures with melodic songwriting."
+    }
+
+]
+
+st.write("")
+st.write("")
+
+st.markdown(
+"""
+<div class="section">
+
+FEATURED PROJECTS
+
+</div>
+""",
+unsafe_allow_html=True
+)
+
+for project in PROJECTS:
+
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+
+    left,right = st.columns([1,2], gap="large")
+
+    with left:
+
+        image = Path(project["image"])
+
+        if image.exists():
+
+            st.image(
+                image,
+                use_container_width=True
+            )
+
+        else:
+
+            st.markdown(
+                """
+<div style="
+height:220px;
+background:#ECE8E2;
+border-radius:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#666;
+">
+Preview
+</div>
+""",
+                unsafe_allow_html=True
+            )
+
+    with right:
+
+        st.caption(project["category"])
+
+        st.subheader(project["title"])
+
+        st.write(project["description"])
+
+        st.caption(project["status"])
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    st.write("")
