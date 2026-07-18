@@ -216,7 +216,7 @@ iframe{
 border-radius:18px;
 }
 
-        /* ========================================= */
+/* ========================================= */
 /* SONG PANEL */
 /* ========================================= */
 
@@ -244,7 +244,31 @@ transform:none;
 .stDivider{
 margin-top:6px;
 margin-bottom:6px;
-}  
+} 
+            
+/* Hide Streamlit radio circles */
+
+div[role="radiogroup"] label{
+
+padding:14px 18px;
+margin-bottom:10px;
+border-radius:16px;
+background:white;
+border:1px solid rgba(0,0,0,.08);
+transition:.25s;
+cursor:pointer;
+display:block;
+
+}
+
+div[role="radiogroup"] label:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+div[role="radiogroup"] input{
+display:none;
+}
 </style>
 
 """, unsafe_allow_html=True)
@@ -332,56 +356,19 @@ with right:
 
     st.markdown("### YOUR PICKS")
 
-    for i, song in enumerate(SONGS):
+    song_names = [f"{s['title']} — {s['artist']}" for s in SONGS]
 
-        selected = i == st.session_state.selected_song
+selection = st.radio(
+    "",
+    options=range(len(song_names)),
+    format_func=lambda i: song_names[i],
+    index=st.session_state.selected_song,
+    label_visibility="collapsed",
+)
 
-        cols = st.columns([1,3])
-
-        with cols[0]:
-
-            cover = Path(song["cover"])
-
-            if cover.exists():
-                st.image(cover, use_container_width=True)
-
-        with cols[1]:
-
-            if selected:
-                st.markdown(
-                    f"""
-<div style="
-padding:8px;
-border-left:4px solid black;
-">
-<b>{song["title"]}</b><br>
-<span style="color:#777;font-size:14px;">
-{song["artist"]}
-</span>
-</div>
-""",
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.markdown(
-                    f"""
-<b>{song["title"]}</b><br>
-<span style="color:#777;font-size:14px;">
-{song["artist"]}
-</span>
-""",
-                    unsafe_allow_html=True,
-                )
-
-        if st.button(
-            "Select",
-            key=f"song_{i}",
-            use_container_width=True,
-        ):
-            st.session_state.selected_song = i
-            st.rerun()
-
-        st.divider()
+if selection != st.session_state.selected_song:
+    st.session_state.selected_song = selection
+    st.rerun()
 
     # ==========================================================
 # FEATURED PROJECTS
