@@ -215,7 +215,36 @@ margin-bottom:8px;
 iframe{
 border-radius:18px;
 }
-            
+
+        /* ========================================= */
+/* SONG PANEL */
+/* ========================================= */
+
+.song-panel{
+animation:fadeIn .35s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(12px);
+
+}
+
+to{
+opacity:1;
+transform:none;
+
+}
+
+}
+
+.stDivider{
+margin-top:6px;
+margin-bottom:6px;
+}  
 </style>
 
 """, unsafe_allow_html=True)
@@ -245,8 +274,7 @@ unsafe_allow_html=True
 # SONGS OF THE WEEK
 # ==========================================================
 
-st.write("")
-st.write("")
+st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -257,51 +285,103 @@ SONGS OF THE WEEK
     unsafe_allow_html=True,
 )
 
-# Keep track of the selected song
 if "selected_song" not in st.session_state:
     st.session_state.selected_song = 0
 
+left, right = st.columns([2.2, 1], gap="large")
+
 current = SONGS[st.session_state.selected_song]
 
-left, right = st.columns([2, 1], gap="large")
-
-# ----------------------------------------------------------
+# ==========================================================
 # LEFT PANEL
-# ----------------------------------------------------------
+# ==========================================================
 
 with left:
+
+    st.markdown('<div class="song-panel">', unsafe_allow_html=True)
 
     cover = Path(current["cover"])
 
     if cover.exists():
         st.image(cover, use_container_width=True)
 
-    st.subheader(current["title"])
-    st.caption(current["artist"])
+    st.markdown(
+        f"""
+### {current["title"]}
+
+<span style="color:#777;font-size:18px;">
+{current["artist"]}
+</span>
+""",
+        unsafe_allow_html=True,
+    )
 
     st.components.v1.iframe(
         current["youtube"],
-        height=320,
+        height=340,
         scrolling=False,
     )
 
-# ----------------------------------------------------------
-# RIGHT PANEL
-# ----------------------------------------------------------
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ==========================================================
+# PLAYLIST
+# ==========================================================
 
 with right:
 
-    st.markdown("### Playlist")
+    st.markdown("### YOUR PICKS")
 
     for i, song in enumerate(SONGS):
 
+        selected = i == st.session_state.selected_song
+
+        cols = st.columns([1,3])
+
+        with cols[0]:
+
+            cover = Path(song["cover"])
+
+            if cover.exists():
+                st.image(cover, use_container_width=True)
+
+        with cols[1]:
+
+            if selected:
+                st.markdown(
+                    f"""
+<div style="
+padding:8px;
+border-left:4px solid black;
+">
+<b>{song["title"]}</b><br>
+<span style="color:#777;font-size:14px;">
+{song["artist"]}
+</span>
+</div>
+""",
+                    unsafe_allow_html=True,
+                )
+            else:
+                st.markdown(
+                    f"""
+<b>{song["title"]}</b><br>
+<span style="color:#777;font-size:14px;">
+{song["artist"]}
+</span>
+""",
+                    unsafe_allow_html=True,
+                )
+
         if st.button(
-            f"🎵 {song['title']}",
+            "Select",
             key=f"song_{i}",
             use_container_width=True,
         ):
             st.session_state.selected_song = i
             st.rerun()
+
+        st.divider()
 
     # ==========================================================
 # FEATURED PROJECTS
