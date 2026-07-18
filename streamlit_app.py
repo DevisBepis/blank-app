@@ -58,7 +58,7 @@ PROJECTS = []
 
 def load_css():
 
-    with open("assets/styles/main.css") as f:
+    with open("assets/assets/styles/main.css") as f:
 
         st.markdown(
             f"<style>{f.read()}</style>",
