@@ -21,20 +21,29 @@ SITE = {
     "tagline": "Independent Upcoming Producer • Web/Game Developer • Strategy Game Analyst",
     
 }
-SONG = {
-    "title": "SONG OF THE WEEK.",
+SONGS = [
 
-    "artist": "Kanye West - Homecoming",
+    {
+        "title": "Homecoming",
+        "artist": "Kanye West",
+        "cover": "assets/covers/homecoming.jpg",
+        "youtube": "https://www.youtube.com/embed/LQ488QrqGE4"
+    },
 
-    "cover": "assets/covers/mari-kart.jpg",
+    {
+        "title": "Saint Pablo",
+        "artist": "Kanye West",
+        "cover": "assets/covers/saint_pablo.jpg",
+        "youtube": "https://www.youtube.com/embed/w9rzz4pDFwA"
+    },
 
-    "youtube":
-    "https://www.youtube.com/embed/EzU0ofo3jOs",
-    "description":
-    """
-    idk lol.
-    """
-}
+    {
+        "title": "White Ferrari",
+        "artist": "Frank Ocean",
+        "cover": "assets/covers/white_ferrari.jpg",
+        "youtube": "https://www.youtube.com/embed/Dlz_XHeUUis"
+    },
+]
 
 PROJECTS = []
 
@@ -185,14 +194,25 @@ margin-bottom:18px;
 }
 
 .stCaption{
-
 letter-spacing:.12em;
-
 text-transform:uppercase;
-
 font-size:.75rem;
-
 color:#888;
+}
+
+/* ========================================== */
+/* SONG LIST */
+/* ========================================== */
+
+button[kind="secondary"]{
+text-align:left;
+padding:14px;
+font-weight:600;
+border-radius:14px;
+margin-bottom:8px;
+}
+iframe{
+border-radius:18px;
 }
             
 </style>
@@ -221,7 +241,7 @@ unsafe_allow_html=True
 )
 
 # ==========================================================
-# NOW PLAYING
+# SONGS OF THE WEEK
 # ==========================================================
 
 st.write("")
@@ -230,86 +250,57 @@ st.write("")
 st.markdown(
     """
 <div class="section">
-
-RANDOM MEME THING
-
+SONGS OF THE WEEK
 </div>
 """,
     unsafe_allow_html=True,
 )
 
-cover_col, player_col = st.columns([1, 2], gap="large")
+# Keep track of the selected song
+if "selected_song" not in st.session_state:
+    st.session_state.selected_song = 0
+
+current = SONGS[st.session_state.selected_song]
+
+left, right = st.columns([2, 1], gap="large")
 
 # ----------------------------------------------------------
-# LEFT
+# LEFT PANEL
 # ----------------------------------------------------------
 
-from pathlib import Path
+with left:
 
-with cover_col:
-    cover = Path(SONG["cover"])
+    cover = Path(current["cover"])
 
     if cover.exists():
-        st.image(
-            cover,
-            use_container_width=True,
-        )
-    else:
-        st.markdown(
-            """
-<div class="card" style="
-height:320px;
-display:flex;
-justify-content:center;
-align-items:center;
-color:#777;
-">
-Album cover missing
-</div>
-""",
-            unsafe_allow_html=True,
-        )
+        st.image(cover, use_container_width=True)
 
-# ----------------------------------------------------------
-# RIGHT
-# ----------------------------------------------------------
-
-with player_col:
-
-    st.markdown(
-        f"""
-<div class="card">
-
-<h2 style="margin-top:0;margin-bottom:6px;">
-
-{SONG["title"]}
-
-</h2>
-
-<p style="margin-top:0;color:#666;font-size:1rem;">
-
-{SONG["artist"]}
-
-</p>
-
-<p style="margin-top:24px;line-height:1.8;color:#555;">
-
-{SONG["description"]}
-
-</p>
-
-</div>
-""",
-        unsafe_allow_html=True,
-    )
-
-    st.write("")
+    st.subheader(current["title"])
+    st.caption(current["artist"])
 
     st.components.v1.iframe(
-        SONG["youtube"],
-        height=315,
+        current["youtube"],
+        height=320,
         scrolling=False,
     )
+
+# ----------------------------------------------------------
+# RIGHT PANEL
+# ----------------------------------------------------------
+
+with right:
+
+    st.markdown("### Playlist")
+
+    for i, song in enumerate(SONGS):
+
+        if st.button(
+            f"🎵 {song['title']}",
+            key=f"song_{i}",
+            use_container_width=True,
+        ):
+            st.session_state.selected_song = i
+            st.rerun()
 
     # ==========================================================
 # FEATURED PROJECTS
@@ -371,11 +362,8 @@ unsafe_allow_html=True
 
 for project in PROJECTS:
     st.markdown("<div class='card'>", unsafe_allow_html=True)
-
     left, right = st.columns([1, 2], gap="large")
-
     from pathlib import Path
-
     with left:
         # support keys: media, video, image
         media_path = project.get("media") or project.get("video") or project.get("image")
@@ -390,7 +378,6 @@ for project in PROJECTS:
                         mtype = "video"
                     else:
                         mtype = "image"
-
                 if mtype == "image":
                     st.image(media, use_container_width=True)
                 elif mtype == "video":
