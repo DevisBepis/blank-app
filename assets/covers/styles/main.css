@@ -1,0 +1,215 @@
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap');
+
+/* ==========================================================
+   ROOT
+========================================================== */
+
+html,
+body,
+[data-testid="stAppViewContainer"]{
+
+    background:#F6F4EF;
+    color:#111;
+    font-family:'Inter',sans-serif;
+
+}
+
+/* Streamlit */
+
+[data-testid="stHeader"]{
+
+    background:transparent;
+    box-shadow:none;
+
+}
+
+.block-container{
+    max-width:1180px;
+    padding-top:2rem;
+    padding-bottom:5rem;
+
+}
+
+div[data-testid="stVerticalBlock"]{
+    gap:1.6rem;
+
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+.logo{
+
+    font-family:'Bebas Neue';
+    font-size:4rem;
+    letter-spacing:.12em;
+
+}
+
+.title{
+
+    font-size:4.8rem;
+    font-weight:800;
+    line-height:.95;
+
+}
+
+.section{
+
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.25em;
+    color:#666;
+    margin-bottom:12px;
+
+}
+
+.body{
+
+    font-size:1.05rem;
+    line-height:1.8;
+    color:#555;
+
+}
+
+/* ==========================================================
+   CARDS
+========================================================== */
+
+.card{
+
+    background:white;
+    border-radius:22px;
+    padding:28px;
+    border:1px solid rgba(0,0,0,.08);
+    transition:.25s;
+    box-shadow:0 14px 35px rgba(0,0,0,.05);
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+    box-shadow:0 22px 50px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.stButton>button{
+
+    width:100%;
+    border:none;
+    border-radius:999px;
+    background:#111;
+    color:white;
+    padding:.8rem;
+    transition:.25s;
+
+}
+
+.stButton>button:hover{
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   MEDIA
+========================================================== */
+
+.stImage img{
+    border-radius:18px;
+
+}
+
+iframe{
+
+    border:none;
+    border-radius:18px;
+    width:100%;
+
+}
+
+/* ==========================================================
+   SONGS
+========================================================== */
+
+.song-panel{
+    animation:fadeIn .35s ease;
+
+}
+
+.song-card{
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(0,0,0,.08);
+    background:white;
+    transition:.25s;
+
+}
+
+.song-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+}
+
+.song-selected{
+    border-left:5px solid black;
+    background:#f0ede8;
+
+}
+
+/* ==========================================================
+   PROJECTS
+========================================================== */
+
+.project-card{
+    animation:fadeIn .35s ease;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:none;
+
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:900px){
+.logo{
+    font-size:3rem;
+
+}
+
+.title{
+    font-size:3.5rem;
+}
+
+}
