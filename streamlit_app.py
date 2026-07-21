@@ -42,7 +42,7 @@ SONGS = [
         "title": "Can't Tell Me Nothing",
         "artist": "Kanye West",
         "cover": "assets/covers/white_ferrari.jpg",
-        "youtube": "https://youtube.com/embed/UDVruqJHSsdWUoPg"
+        "youtube": "https://www.youtube.com/embed/UDVruqJHSsdWUoPg"
     },
 ]
 
