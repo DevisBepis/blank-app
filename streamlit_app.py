@@ -39,10 +39,10 @@ SONGS = [
     },
 
     {
-        "title": "White Ferrari",
-        "artist": "Frank Ocean",
+        "title": "Can't Tell Me Nothing",
+        "artist": "Kanye West",
         "cover": "assets/covers/white_ferrari.jpg",
-        "youtube": "https://www.youtube.com/embed/Dlz_XHeUUis"
+        "youtube": "https://youtu.be/hqvcww4ydh8?si=UDVruqJHSsdWUoPg"
     },
 ]
 
