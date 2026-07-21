@@ -205,9 +205,9 @@ PROJECTS = [
         "image":"assets/assets/images (1).jpg",
 
         "description":
-        "A conceptual, WIP EP. More info on the Autobiography page."
+        "A conceptual, WIP EP. More info here."
     }
-
+     #add hyperlink redirect to "here" on line 208
 ]
 
 st.write("")
