@@ -52,6 +52,7 @@ PROJECTS = []
 # GLOBAL CSS
 # ==========================================================
 
+#ayoha sa ni boss
 # ==========================================================
 # LOAD CSS
 # ==========================================================
@@ -149,7 +150,7 @@ with left:
 
 with right:
 
-    st.markdown("### YOUR PICKS")
+    st.markdown("### HEHEHEHA")
 
     song_names = [f"{s['title']} — {s['artist']}" for s in SONGS]
 
