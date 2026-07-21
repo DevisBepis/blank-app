@@ -177,7 +177,7 @@ PROJECTS = [
         "media_type": "video",
         "media":"assets/assets/pcs.mp4",
         "category":"ROM Hack",
-        "status":"Demo • TBA",
+        "status":"Coding: Game - Demo [TBA]",
         "description":
         "A ROM Hack Project I started back in 2025. Planning on moving it to pokeemerald expansion."
     },
@@ -185,7 +185,7 @@ PROJECTS = [
     {
         "title":"FOR YOU v1",
 
-        "category":"Music",
+        "category":"Music - Single",
 
         "status":"Released - Originally on Instagram",
 
@@ -198,7 +198,7 @@ PROJECTS = [
     {
         "title":"GARDEN OF THORNS",
 
-        "category":"EP",
+        "category":"Music - EP",
 
         "status":"In Progress",
 
