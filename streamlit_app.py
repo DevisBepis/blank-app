@@ -202,7 +202,7 @@ PROJECTS = [
 
         "status":"In Progress",
 
-        "image":"assets/assets/garden_of_thorns.png",
+        "image":"assets/assets/images (1).jpg",
 
         "description":
         "A conceptual, WIP EP. More info on the Autobiography page."
