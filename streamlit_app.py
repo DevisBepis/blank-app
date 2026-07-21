@@ -176,8 +176,8 @@ PROJECTS = [
         "title":"Pokémon Cerulean Seas",
         "media_type": "video",
         "media":"assets/assets/pcs.mp4",
-        "category":"ROM Hack",
-        "status":"Coding: Game - Demo [TBA]",
+        "category":"Coding: Game - Demo",
+        "status":"TBA",
         "description":
         "A ROM Hack Project I started back in 2025. Planning on moving it to pokeemerald expansion."
     },
